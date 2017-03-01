@@ -10,7 +10,7 @@
   - merge the relevant branches in
 - Work on the issue
 - Test your changes, ensure nothing breaks
-- Submit a [Pull Request](../PR Format.md)
+- Submit a [Pull Request](../format/Pull Requests.md)
 
 > Issue transitions to **In Review**
 
