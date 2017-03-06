@@ -2,7 +2,7 @@
 
 - Search for related issues
 - *If no issue exists yet:*
-   - Create a [new issue](../format/Issue.md)
+   - Create a [new issue](../format/Issues.md)
 
    > Issue transitions to **Open**
 
