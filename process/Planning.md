@@ -6,8 +6,13 @@
 
    > Issue transitions to **Open**
 
-- Ops/Architecture approves issue for work - issue gains "Spec'd" tag. Any issue without a spec'd tag is
-    simply an idea that needs discussing.
+- Estimation: TBD
+   - test step pls ignore
 
-- When Ops/Architecture deem that it is a good time for work to start for a certain issue, the issue
-    will then get placed onto the board, in the "To Do" column.
+> Issue transitions to **Incubating**
+
+- **Once issue has passed Signoff**
+
+> Issue transitions to **Waiting**
+
+At this point, the issue is the responsibility of the PM, who will prioritize and sequence it.
