@@ -8,4 +8,4 @@ ie. when you push the `env/staging` branch, the codebase at that point gets depl
 - Find the code branch you want to deploy
 - Reset the `env` branch to the code branch
 - Push the `env` branch
-- [Migrate](../process/Migrate.md) the environment database
+- [Migrate](../process/Migration.md) the environment database

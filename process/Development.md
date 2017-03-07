@@ -1,5 +1,7 @@
 **Scenario:** You start working on an issue
 
+You are responsible for shepherding your work through the development process. If you do not stay on top of it, no one else will.
+
 - Assign the issue to yourself
 - Branch off of `master`, name the new branch by the issue key
 - Push the branch
