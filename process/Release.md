@@ -2,6 +2,8 @@
 
 - Add issues to release on JIRA
 - Create branch for next release and set as default in Github
+- Delete the second-to-last release branch
+   - ie. if this is v3, delete v1
 - [Prepare the release](../process/Release Preparation.md)
 - [Deploy to](../process/Deployment) *staging*
 - Wait for [QA](../process/QA.md)
