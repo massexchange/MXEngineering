@@ -13,5 +13,6 @@
       - **Once they merge in the release branch and resolve the conflicts:**
       - merge the PR
 - Move all merged issues to the **In Release** column
+- Bump the version number in the repo
 
 > Issues transition to **In Release**
