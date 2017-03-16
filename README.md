@@ -5,4 +5,4 @@ This is a set of documents describing various aspects of our organization's proc
 You may want to start here:
 - [Planning](process/Planning.md)
 - [Development](process/Development.md)
-- [What Do?](process/What Do%3F.md)
+- [What Do?](process/What%20Do%3F.md)
