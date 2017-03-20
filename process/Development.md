@@ -12,7 +12,7 @@ You are responsible for shepherding your work through the development process. I
   - merge the relevant branches in
 - Work on the issue
 - Test your changes, ensure nothing breaks
-- Submit a [Pull Request](../format/Pull Requests.md)
+- Submit a [Pull Request](../format/Pull%20Requests.md)
 
 > Issue transitions to **In Review**
 
