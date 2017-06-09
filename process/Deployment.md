@@ -6,8 +6,8 @@ ie. when you push the `env/staging` branch, the codebase at that point gets depl
 
 - Find the relevant `env/...` branch
 - Find the code branch you want to deploy
-- Reset the `env` branch to the code branch
-- Push the `env` branch
+- If possible, *fast forward*, otherwise *hard reset*, the `env` branch to the code branch
+- *Push* the `env` branch (*force*, if necessary)
 - [Migrate](../process/Migration.md) the environment database
 
 > Note: due to a Codeship inadequacy, to deploy a commit thats previously been deployed, you must either do so manually through their UI, or by making a lambda change (for example, butt-touching: `touch butt`)
