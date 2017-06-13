@@ -1,5 +1,3 @@
-### Issues
-
 An issue represents an item of work to be done.
 
 #### All issues

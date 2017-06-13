@@ -1,5 +1,3 @@
-### Source Control
-
 We use the `git` version control system to keep track of our development efforts. The official repositories are hosted on Github in the `massexchange` organization.
 
 We follow a modified version of gitflow for structuring our repository/process:
