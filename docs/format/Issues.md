@@ -19,7 +19,7 @@ What is the problem being solved?
 
 **Format:** `Location - Problem`
 
-`Location` is a short prefix describing where in the system the problem occurs, ie:
+`Location` is a short prefix describing where in the system the problem occurs. If there is a hierarchy to the location, specify it using `>`, ie:
    - `Pricing > Rate Card`
    - `PricingService`
 
