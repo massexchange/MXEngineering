@@ -12,7 +12,7 @@
 - Delete the previous release branch
    - ie. if this is `v3`, delete `v2`
 - [Prepare the release](../process/Release%20Candidate%20Preparation.md)
-- [Deploy to](../process/Deployment) *staging*
+- [Deploy to](../process/Deployment.md) *staging*
 - Wait for [QA](../process/QA.md)
 - **Once QA approves the release:**
 - Merge the release branch into `master`
