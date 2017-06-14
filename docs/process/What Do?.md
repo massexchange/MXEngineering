@@ -2,6 +2,8 @@
 
 You finished all the work on your docket. Congrats! You did a thing. Go you. What now?
 
+Follow these in order:
+
 - Are there any **Blocker** issues at the top of the backlog?
    - take them ASAP
 - Do any of your open PRs have reviews that require addressing?

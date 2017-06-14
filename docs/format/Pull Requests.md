@@ -1,5 +1,3 @@
-### Pull Requests
-
 When you want to merge changes you've been working on into the main codebase, you create a Pull Request on Github, from your branch into the next release branch.
 
 Most PRs need 2 approvals and 1 successful test in order to be considered **Ready**, while bugfix PRs only need 1 approval.

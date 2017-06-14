@@ -1,6 +1,6 @@
-### Issues
-
 An issue represents an item of work to be done.
+
+Most fields are the same for all issue types, but some issue types have more specific instructions. Those are after the `All Issues` section.
 
 #### All issues
 
@@ -21,7 +21,7 @@ What is the problem being solved?
 
 **Format:** `Location - Problem`
 
-`Location` is a short prefix describing where in the system the problem occurs, ie:
+`Location` is a short prefix describing where in the system the problem occurs. If there is a hierarchy to the location, specify it using `>`, ie:
    - `Pricing > Rate Card`
    - `PricingService`
 
@@ -47,8 +47,6 @@ What part of the system does this affect?
 ##### Labels
 Are there any categories of issues this falls in?
 
-> Note: all issues are currently labeled *Spec'd*
-
 ##### Description
 What exactly is the problem and what should be changed?
 
@@ -66,7 +64,7 @@ Is this work part of a larger effort?
 ##### Priority
 
 - *Blocker*
-   - MUST be fixed in next release
+   - MUST be fixed in the referenced (or next) release
 
 ##### Affects Version
 What version was this first observed in?

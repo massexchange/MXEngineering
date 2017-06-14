@@ -21,5 +21,6 @@ You are responsible for shepherding your work through the development process. I
    - make the changes
    - notify the reviewer by tagging them in a comment
 - **Once you have two approvals and one test:**
+- Label your PR **ready**
 
 > Issue transitions to **Ready**
