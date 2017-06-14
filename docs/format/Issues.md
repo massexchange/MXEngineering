@@ -1,5 +1,7 @@
 An issue represents an item of work to be done.
 
+Most fields are the same for all issue types, but some issue types have more specific instructions. Those are after the `All Issues` section.
+
 #### All issues
 
 ##### Issue Type
