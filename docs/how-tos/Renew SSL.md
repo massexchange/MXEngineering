@@ -1,8 +1,12 @@
 **Every year, around September 1st, our SSL key and certs need to renewed and rotated. To do purchase and submit the new keys:**
 
-- Go to [website where we get keys from (li fill this in)](somesite.com).
+- Go to [website where we get keys from [CheapSSLSecurity - Comodo PositiveSSL](https://cheapsslsecurity.com/).
 
-- Li continue this part...
+- Use their CSR generation form to create a CSR + private key
+
+- Submit the generated CSR to create the certs
+
+- Verify domain ownership by sending verification email to info@massexchange.com
 
 - Once you have been granted the new SSL Private Key and the bundle of **4** .crt files, submit these files to Ops via flash drive or GMail. DO NOT, UNDER ANY CIRCUMSTANCES, SUBMIT THEM THROUGH ANY OTHER MEDIA, INCLUDING HIPCHAT.
 
