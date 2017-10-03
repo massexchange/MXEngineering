@@ -15,6 +15,10 @@
     - run the following command in a terminal:
       - `curl -X GET -H "X-Auth-Token: <token from table>" localhost:8080/migration/<endpoint name>`
 
+- As an additional step when testing backend issues
+  - run `node dmm.js` in the DataModel folder to regenerate the `master.sql` script
+  - run it on a fresh schema; if the script fails or tables are missing, fail the issue entirely
+
 - For frontend issues:
   - run `npm install`
   - run `bower install`
