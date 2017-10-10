@@ -12,7 +12,7 @@
   - run any required migrations first (see the [migrations doc]((../process/Migration.md)))
   - run `mvn clean compile`
   - As an additional step when testing backend issues (after following the PR Author's steps):
-    - run `node dmm.js` in the DataModel folder to regenerate the `master.sql` script
+    - run `node dmm.js` in the `DataModel` folder to regenerate the `master.sql` script
     - run it on a fresh schema; if the script fails or tables are missing, fail the issue entirely
 
 
