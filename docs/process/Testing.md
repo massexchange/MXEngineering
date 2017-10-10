@@ -27,11 +27,11 @@
     - **NOTE** you may have to edit the `PROJECT_NAME` variable inside the script
 
 - Follow the testing steps provided by the PR author
-- If the test fails, comment [Test: Fail]
+- If the test fails, comment `[Test: Fail]`
   - provide reproduction steps and, if possible, a stacktrace
-- Otherwise, comment [Test: Pass], and remove the **needs test** label
+- Otherwise, comment `[Test: Pass]`, and remove the **needs test** label
 
-- Things that you **shouldn't** worry about during testing:
+- Things that you SHOULD NOT worry about during testing:
   - The testing steps don't seem to work
     - this is a fail; provide reproduction steps but do not attempt to correct the testing steps
   - The testings steps are too vague
