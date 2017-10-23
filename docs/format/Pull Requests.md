@@ -19,3 +19,12 @@ Most PRs need 2 approvals and 1 successful test in order to be considered **Read
 #### Hotfixes:
 - Title should be prefixed with the the hotfix version
    - `[Hotfix 0.22.1] ...`
+
+### Labels
+
+We use labels to communicate metadata about the status of a PR.
+
+- **ready**: this PR has been approved/tested and is ready for release
+- **blocker**: this PR is urgent, and no release should happen until it is **ready**
+- **needs test**: this PR is awaiting a test
+- **unstable**: this PR is not up to date with latest master and needs merging
