@@ -17,12 +17,13 @@
 - **Once QA approves the release:**
 - Merge the release branch into `master`
 - Tag the release on `master`
-- Update the next release branch to `master`
+- Update (fast-forward merge) the next release branch to `master`
 - Merge `master` into `demo`
 - [Deploy to](../process/Deployment.md) *app* and *demo*
 - Move all issues to **Releasable**
 - Update JIRA version description
 - Release the JIRA version
+- Label all open PRs as **unstable**
 - Delete all released PR branches
 - Notify team of release end
 
