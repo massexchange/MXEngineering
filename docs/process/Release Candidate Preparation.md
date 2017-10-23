@@ -12,5 +12,5 @@
       - repeat this process for each child
    - *If there are merge-conflicts:*
       - notify the author
-      - **Once they merge in the release branch and resolve the conflicts:**
-      - merge the PR
+      - author merges their branch into the release branch and resolves conflicts
+      *merge branch INTO release so that the PR does not get polluted with unrelated deltas*
