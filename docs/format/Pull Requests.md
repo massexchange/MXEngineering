@@ -12,6 +12,13 @@ Most PRs need 2 approvals and 1 successful test in order to be considered **Read
 - *If the PR has an associated PR in another repo:*
    - `Merge with: massexchange/MXWeb#123`
 
+##### Frontend PRs
+
+- *If the PR has changes a user would experience, or
+  If the PR modifies HTML structure/naming:*
+   - notify the QA team by tagging them in a comment
+     `@massexchange/QA`
+
 #### Regular Issues:
 - Title should be prefixed with the issue key
    - `[BE-123] ...`
