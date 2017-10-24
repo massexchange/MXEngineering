@@ -7,4 +7,11 @@ You can use git log to check if any migrations exist. Compare the commit you're 
 - **For each migration, in increasing issue key order:**
    - *If the migration has special instructions:*
       - follow those first
-   - run the migration on the environment database
+   - run the sql migrations on the environment database
+   - for endpoint migrations:
+     - start the application and login
+     - obtain the auth token from the `Sessions` table in the database
+     - run the following command in a terminal:
+       - `curl -X GET -H "X-Auth-Token: <token from table>" <environment url>/migration/<endpoint name>`
+       - for local environments, the url is usually `localhost:8080`
+

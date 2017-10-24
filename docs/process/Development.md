@@ -17,10 +17,11 @@ You are responsible for shepherding your work through the development process. I
 > Issue transitions to **In Review**
 
 - Notify other devs and wait for reviews
+- Label your PR **needs test**
 - _If changes are requested:_
    - make the changes
    - notify the reviewer by tagging them in a comment
-- **Once you have two approvals and one test:**
+- **Once you have two approvals and one successful test:**
 - Label your PR **ready**
 
 > Issue transitions to **Ready**
