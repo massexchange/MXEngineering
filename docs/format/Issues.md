@@ -59,10 +59,15 @@ Approximate order of magnitude of how much code will need to be modified. This i
 The units for this value are `Delta OoM` (Order of Magnitude). For example, if a certain change requires touching approximately 65 nodes, find the closest power of 10 (100), and express it in scientific notation (`10e2`). The number after the e is the value.
 
 0: `Statement`
+
 1: `Function`
+
 2: `Component`
+
 3: `Module`
+
 4: `System`
+
 5: `Application`
 
 ##### Assignee
