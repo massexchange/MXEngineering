@@ -15,6 +15,7 @@
 - [Deploy to](../process/Deployment.md) *staging*
 - Wait for [QA](../process/QA.md)
 - **Once QA approves the release:**
+- Update (fast-forward merge) your local release branch
 - Merge the release branch into `master`
 - Tag the release on `master`
 - Update (fast-forward merge) the next release branch to `master`
