@@ -22,24 +22,6 @@ Within the MX platform we think in terms of `Organizations`, `Users`, `Teams`, `
 
 * Attributes in turn have `Types`, which describe what sort of information attributes of that type convey about assets. In the same analogy, the types would be `Color`, `Fruit`, `Size`. Thinking about types allows us to measure the specificity (defined later) of an asset.
 
-#### Components
-
-The buy-side MX platform consists of several areas of functionality; `Organization Management`, the `Market`, and `Brokerage`. There are others, but these are all that is relevant for this implementation.
-
-* Organization Management
-    * Profile
-    * Settings
-    * Permissions
-* Market
-    * Query (aka View)
-    * *Watch (Planned)*
-    * Private
-* Brokerage
-    * Campaigns
-    * Active
-    * History
-    * Log
-
 ### Market
 
 #### Rules
