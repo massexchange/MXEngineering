@@ -114,7 +114,7 @@ All entities have `Ids`; they are unique, but not globally. There will never be 
 
 Not all fields are documented here; the ones left off are safe to ignore.
 
-##### `AvailablilityGroup`
+##### `AvailabilityGroup`
 
 Represents a group of avails with the same asset.
 
@@ -156,6 +156,8 @@ Represents a group of avails with the same asset.
     * Market the `OrderGroup` will eventually be submitted into
 * price: `Currency`
 * asset: `Set<Attribute>`
+* status: `OrderStatus`
+    * this field is read-only
 
 ##### `Deal`
 
@@ -232,8 +234,9 @@ Path variables:
 
 Request body: `OrderGroup`
 
-##### Buy Order Status Query
-Query the current status of your `OrderGroup`
+##### Buy Order Query
+
+Get the current version of your `OrderGroup`
 
 `GET /orderGroup/{groupId}`
 Path variables:
