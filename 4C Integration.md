@@ -8,9 +8,9 @@
 
 Within the MX platform we think in terms of `Organizations`, `Users`, `Teams`, `Roles`, `Markets`, `Orders`, `Assets`, `Attributes`, and `Matches`.
 
-* An `Organization` represents a single buyer or seller, and is analogous to a company account. There are many `Users` within an `Organization`, and any action a user takes looks from the outside as if it was done by the organization. Users are assigned to `Teams`, and given `Roles` within those teams which constrain which actions they are allowed to take.
+* An `Organization` represents a single buyer or seller, and is analogous to a company account. There are many `Users` within an `Organization`, and any action a user takes looks, from the outside, as if it was done by the organization. Users are assigned to `Teams`, and given `Roles` within those teams which constrain which actions they are allowed to take.
 
-* A `Market` is an environment in which transactions happen. There is an `Open Market` and several `Private Markets`. Initially, all transactions will happen in the latter. `Orders` in private markets can only be seen by market members, which are `Organizations`, and defined by the market owner.
+* A `Market` is an environment in which transactions happen. There is an `Open Market` and user defined `Private Markets`. Initially, all transactions will happen in the latter. `Orders` in private markets can only be seen by market members, which are `Organizations`, and defined by the market owner.
 
 * An `Order` is how we represent supply or demand entered into a `Market`. An order represents the intention of an `Organization` to buy/sell some amount of a certain `Asset` in a `Market`, at some price.
 
@@ -62,15 +62,15 @@ The buy-side MX platform consists of several areas of functionality; `Organizati
 * Orders cannot be matched FOR the current day, ie an order for today's media can match, at the latest, yesterday.
 
 #### Workflow
-1. Seller submits their supply into the market
-2. Buyer queries the market to see avails
-3. Buyer submits their demand into the market
-    a. create a `Campaign` per brand
-    b. create `OrderGroups` for all desired `Assets` in that campaign
-    c. submit ordergroups into the market
-4. If there is is no match, the orders rest until cancelled or expired
+1. Seller submits their supply into the market.
+2. Buyer queries the market to see avails.
+3. Buyer submits their demand into the market.
+    a. create a `Campaign` per brand.
+    b. create `OrderGroups` for all desired `Assets` in that campaign.
+    c. submit ordergroups into the market.
+4. If there is is no match, the orders rest until cancelled or expired.
 5. If there is a match, the inventory is transferred and taken off the market.
-6. After a match, buyer can see results on the Log
+6. After a match, buyer can see results on the Log.
 
 ### API Structure
 
@@ -95,9 +95,9 @@ The MX API accepts and returns `JSON` data, using a format called `JSOG` (`Javas
 
 ##### Types
 
-* `Dates` are formatted as `ISO 8601` with timezone UTC
-* `Ids` are long-valued integers; any field called `id` will always be of this type
-* `Sets` and `Lists` are both sent as arrays, distinguished only by semantics
+* `Dates` are formatted as `ISO 8601` with timezone UTC.
+* `Ids` are long-valued integers; any field called `id` will always be of this type.
+* `Sets` and `Lists` are both sent as arrays, distinguished only by semantics.
 * `Pages` are a wrapper object for paged endpoints, with these fields:
     * **content**
         * the current page of results
@@ -116,7 +116,7 @@ Not all fields are documented here; the ones left off are safe to ignore.
 
 ##### `AvailablilityGroup`
 
-Represents a group of avails with the same asset
+Represents a group of avails with the same asset.
 
 * asset: `Set<Attribute>`
 * avails: `List<Availablility>`
