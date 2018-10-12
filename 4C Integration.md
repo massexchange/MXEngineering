@@ -164,7 +164,6 @@ Represents a group of avails with the same asset.
 * broadcastDate: `Date`
 * airTime: `Time`
 * status: `DealStatus`
-* revenueStream: `RevenueStream`
 * marketplace: `Marketplace`
 * dealSalesType: `DealSalesType`
 * unitStatus: `UnitStatus`
@@ -177,7 +176,6 @@ Represents a group of avails with the same asset.
 * brand: `String`
 * category: `String`
 * grossDollars: `Currency`
-* rateCardDollars: `Currency`
 * asset: `Set<Pair<String, String>>`
 
 ##### `OrderQuery`
