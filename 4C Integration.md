@@ -28,9 +28,9 @@ Within the MX platform we think in terms of `Organizations`, `Users`, `Teams`, `
 
 * The market operates on **New York time (EDT, GMT-5)**, and is open from **9:30AM-4:30PM**. Orders may be submitted at any time, but will **only be processed** when the market is open.
 
-* Orders are processed in a **first-in-first-out** queue; if your order is submitted before another one, it is guaranteed to get access to supply first. If an order is edited, it goes to the end of the queue.
+* Orders are processed in the order they are submitted, even if submitted while the market was closed. If an order is edited, it goes to the end of the queue.
 
-* Supply and demand are matched by **asset first, and by price second**. Submission order is only relevant when two competing orders have the same price.
+* Supply and demand are matched on, in order of priority, **asset, price, and submission order**.
 
 * Sellers may only enter sell orders for assets they actually have in their catalog. Buyers may enter any valid order, even if there is nothing available in the market to match it.
 
@@ -45,15 +45,12 @@ Within the MX platform we think in terms of `Organizations`, `Users`, `Teams`, `
 
 * Orders can be partially filled, ie an order for 10 can match against an order for 5, and the remainder will stay in the market.
 
-* Orders cannot be matched FOR the current day, ie an order for today's media can match, at the latest, yesterday.
+* Orders can be matched for assets running, at the earliest, tomorrow. Today's assets cannot be matched against; processing time is required to traffic matches. Sellers can configure a longer trafficking window if one day is not adequate.
 
 #### Workflow
 1. Seller submits their supply into the market.
-2. Buyer queries the market to see avails.
+2. Buyer queries the market to see availible supply.
 3. Buyer submits their demand into the market.
-    a. create a `Campaign` per brand.
-    b. create `OrderGroups` for all desired `Assets` in that campaign.
-    c. submit ordergroups into the market.
 4. If there is is no match, the orders rest until cancelled or expired.
 5. If there is a match, the inventory is transferred and taken off the market.
 6. After a match, buyer can see results on the Log.
@@ -103,7 +100,7 @@ Not all fields are documented here; the ones left off are safe to ignore.
 
 ##### `AvailabilityGroup`
 
-Represents a group of avails with the same asset.
+Represents a group of avails (available supply) with the same asset.
 
 * asset: `Set<Attribute>`
 * avails: `List<Availablility>`
