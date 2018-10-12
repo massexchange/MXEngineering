@@ -1,6 +1,6 @@
-# 4C integration doc
+# MX Buyer Integration Guide
 
-###### This document will give a brief overview of the MX media-buying platform, and explain how to interact with its API.
+###### This document will give a brief overview of the MX media platform, and explain how to interact with its API.
 
 ### Platform Overview
 
@@ -14,9 +14,13 @@ Within the MX platform we think in terms of `Organizations`, `Users`, `Teams`, `
 
 * An `Order` is how we represent supply or demand entered into a `Market`. An order represents the intention of an `Organization` to buy/sell some amount of a certain `Asset` in a `Market`, at some price.
 
-* An `Asset` is what we call media that is bought and sold. It is composed of `Attributes` and additional information, like the date and time. An `Attribute` represents some piece of information about the asset. `Attributes` in turn have `Types`, which can be thought of as classifications of information about assets. This is displayed in the UI in the format of `Type: Attribute Value`, ie, `Network: AMC`.
-
 * A `Match` is the outcome of a market transaction; it represents an intersection of supply and demand, on terms meeting the requirements of both sides. Matches are analogous to non-preemptible orders in traditional media buys.
+
+* An `Asset` is what we call media that is bought and sold. It represents the right to show an ad, in a particular place, to some audience, at a certain time. It is composed of `Attributes` and additional information, like the date and time.
+
+* An `Attribute` represents some piece of information about the asset. This can be any sort of information, for any sort of asset. For example, to use a fruit market analogy, if its green, if its an apple, if its large or small. Splitting up information about assets in this way allows us to search through them in useful ways. We talk about attributes in the format `Type: Attribute Value`, ie, `Network: AMC`.
+
+* Attributes in turn have `Types`, which describe what sort of information attributes of that type convey about assets. In the same analogy, the types would be `Color`, `Fruit`, `Size`. Thinking about types allows us to measure the specificity (defined later) of an asset.
 
 #### Components
 
@@ -42,7 +46,7 @@ The buy-side MX platform consists of several areas of functionality; `Organizati
 
 * The market operates on **New York time (EDT, GMT-5)**, and is open from **9:30AM-4:30PM**. Orders may be submitted at any time, but will **only be processed** when the market is open.
 
-* Orders are processed in a **first-in-first-out** queue; if your order is submitted before another one, it is guaranteed to get access to supply first. If an order is edited, its position in the queue is reset.
+* Orders are processed in a **first-in-first-out** queue; if your order is submitted before another one, it is guaranteed to get access to supply first. If an order is edited, it goes to the end of the queue.
 
 * Supply and demand are matched by **asset first, and by price second**. Submission order is only relevant when two competing orders have the same price.
 
@@ -107,6 +111,7 @@ The MX API accepts and returns `JSON` data, using a format called `JSOG` (`Javas
         * the total number of pages
     * **first/last**
         * `Booleans` indicating whether the current page is a terminal
+* `Currency` is a `Number` with 2 decimal places of precision
 
 #### Entities
 
