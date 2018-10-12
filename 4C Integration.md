@@ -47,14 +47,6 @@ Within the MX platform we think in terms of `Organizations`, `Users`, `Teams`, `
 
 * Orders can be matched for assets running, at the earliest, tomorrow. Today's assets cannot be matched against; processing time is required to traffic matches. Sellers can configure a longer trafficking window if one day is not adequate.
 
-#### Workflow
-1. Seller submits their supply into the market.
-2. Buyer queries the market to see availible supply.
-3. Buyer submits their demand into the market.
-4. If there is is no match, the orders rest until cancelled or expired.
-5. If there is a match, the inventory is transferred and taken off the market.
-6. After a match, buyer can see results on the Log.
-
 ### API Structure
 
 All MX platform functionality is accessible through our API, which is available to all users. A Javascript SDK can be made available upon request.
@@ -214,3 +206,89 @@ Query your `Match` history
 
 `GET /match`
 Query params: `MatchQuery`
+
+### Workflow
+1. Seller submits their supply into the market.
+2. Buyer queries the market to see availible supply.
+3. Buyer submits their demand into the market.
+4. If there is is no match, the orders rest until cancelled or expired.
+5. If there is a match, the inventory is transferred and taken off the market.
+6. After a match, buyer can see results on the Log.
+
+### Examples
+
+Provided are several example interactions with the MX API.
+
+#### Querying the market
+
+You will often want to query the market to see the avails (available supply). You can filter the query by market and by asset, or get all avails across all markets. This example assumes the latter.
+
+The market query endpoint is `/market/sells` and it accepts `GET` requests. It takes an `OrderQuery` as its parameter, so we will construct one:
+```js
+{
+    start: "2018-11-01T00:00:00.000+0000",
+    end: "2018-11-24T00:00:00.000+0000",
+    role: "ADVERTISER",
+    pageIndex: 0
+}
+```
+
+Now, since this is a `GET` request, we can't pass a body, so we will serialize this as a querystring:
+```
+start=2018-11-01T00:00:00.000+0000&
+end=2018-11-24T00:00:00.000+0000&
+role=ADVERTISER&
+pageIndex=0
+```
+and then URL-encode it and concatenate it to the end of the endpoint path:
+```
+/market/sells?start=2018-11-01T00%3A00%3A00.000%2B0000&end=2018-11-24T00%3A00%3A00.000%2B0000&role=ADVERTISER&pageIndex=0
+```
+Now we take the path and concatenate that to the API URL, which is
+```
+https://sandbox.massexchange.com/api
+```
+and then make a `GET` request with your `HTTP` client to the full URL:
+```
+https://sandbox.massexchange.com/api/market/sells?start=2018-11-01T00%3A00%3A00.000%2B0000&end=2018-11-24T00%3A00%3A00.000%2B0000&role=ADVERTISER&pageIndex=0
+```
+
+If there are avails (lets assume there are, for this example), we will get back a `Page<AvailabilityGroup>`:
+```json
+{
+    "content": [
+        {
+            "asset": [
+                {
+                    "id": 123,
+                    "type": {
+                        "id": 456,
+                        "name": "Network"
+                    },
+                    "value": "AMC"
+                }
+            ],
+            "avails": [
+                {
+                    "start": "2018-11-01T00:00:00.000+0000",
+                    "end": "2018-11-03T00:00:00.000+0000",
+                    "qty": 10,
+                    "price": 1000.00
+                },
+                ...
+            ],
+            "marketId": 1
+        },
+        ...
+    ],
+    "number": 0,
+    "totalPages": 3,
+    "first": true,
+    "last": false
+}
+```
+Notice how the results are wrapped with page metadata, indicating that this is 1/3 pages. If you want to get the rest of the results, you will need to make 2 additional requests, incrementing the `pageIndex` each time.
+
+In the `content` field, you can see an `AvailabilityGroup`, with an embedded `Attribute`, and an `Availability`, as examples. There can, and often will be, multiple objects in those fields.
+
+This sample data indicates that for the date range we queried, there are 10 units available of `Network: AMC` inventory, from `11/01/2018`-`11/03/2018` at `$1000.00` each.
