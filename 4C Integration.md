@@ -143,27 +143,6 @@ Represents a group of avails (available supply) with the same asset.
 * status: `OrderStatus`
     * this field is read-only
 
-##### `Deal`
-
-* network: `String`
-* unitId: `String`
-* broadcastDate: `Date`
-* airTime: `Time`
-* status: `DealStatus`
-* marketplace: `Marketplace`
-* dealSalesType: `DealSalesType`
-* unitStatus: `UnitStatus`
-* logStatus: `LogStatus`
-* spotType: `SpotType`
-* guaranteed: `Boolean`
-* onLog: `Boolean`
-* agency: `String`
-* advertiser: `String`
-* brand: `String`
-* category: `String`
-* grossDollars: `Currency`
-* asset: `Set<Pair<String, String>>`
-
 ##### `OrderQuery`
 
 * start: `Date`
@@ -235,13 +214,3 @@ Query your `Match` history
 
 `GET /match`
 Query params: `MatchQuery`
-
-##### Log Query
-
-Query `Deal` status for a particular advertiser
-
-`GET /deal/advertiser/{advName}`
-Path variables:
-* advName: `String`
-
-Returns: `Set<Deal>`
