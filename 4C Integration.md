@@ -18,7 +18,7 @@ Within the MX platform we think in terms of `Organizations`, `Users`, `Teams`, `
 
 * An `Asset` is what we call media that is bought and sold. It represents the right to show an ad, in a particular place, to some audience, at a certain time. It is composed of `Attributes` and additional information, like the date and time.
 
-* An `Attribute` represents some piece of information about the asset. This can be any sort of information, for any sort of asset. For example, to use a fruit market analogy, if its green, if its an apple, if its large or small. Splitting up information about assets in this way allows us to search through them in useful ways. We talk about attributes in the format `Type: Attribute Value`, ie, `Network: AMC`.
+* An `Attribute` represents some piece of information about the asset. This can be any sort of information, for any sort of asset. For example, to use a fruit market analogy, if its green, if its an apple, if its large or small. Splitting up information about assets in this way allows us to search through them in useful ways. We talk about attributes in the format `Type: Attribute Value`, ie, `Network: WeMakeTv`.
 
 * Attributes in turn have `Types`, which describe what sort of information attributes of that type convey about assets. In the same analogy, the types would be `Color`, `Fruit`, `Size`. Thinking about types allows us to measure the specificity (defined later) of an asset.
 
@@ -265,7 +265,7 @@ If there are avails (lets assume there are, for this example), we will get back 
                         "id": 456,
                         "name": "Network"
                     },
-                    "value": "AMC"
+                    "value": "WeMakeTv"
                 }
             ],
             "avails": [
@@ -291,4 +291,4 @@ Notice how the results are wrapped with page metadata, indicating that this is 1
 
 In the `content` field, you can see an `AvailabilityGroup`, with an embedded `Attribute`, and an `Availability`, as examples. There can, and often will be, multiple objects in those fields.
 
-This sample data indicates that for the date range we queried, there are 10 units available of `Network: AMC` inventory, from `11/01/2018`-`11/03/2018` at `$1000.00` each.
+This sample data indicates that for the date range we queried, there are 10 units available of `Network: WeMakeTv` inventory, from `11/01/2018`-`11/03/2018` at `$1000.00` each.
