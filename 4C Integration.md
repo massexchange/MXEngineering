@@ -217,7 +217,7 @@ Query params: `MatchQuery`
 
 ### Examples
 
-Provided are several example interactions with the MX API.
+Provided are several example interactions with the MX API. It is suggested to read them in order, as they will be progressively less detailed, to not contain redundant information.
 
 #### Querying the market
 
@@ -292,3 +292,28 @@ Notice how the results are wrapped with page metadata, indicating that this is 1
 In the `content` field, you can see an `AvailabilityGroup`, with an embedded `Attribute`, and an `Availability`, as examples. There can, and often will be, multiple objects in those fields.
 
 This sample data indicates that for the date range we queried, there are 10 units available of `Network: WeMakeTv` inventory, from `11/01/2018`-`11/03/2018` at `$1000.00` each.
+
+#### Creating a `Campaign`
+
+Buy orders are organized by `Campaign`, so before you can submit any, you must create a grouping campaign first.
+
+The campaign creation endpoint is `/campaign` and it accepts `POST` requests. It takes a `Campaign` object in the request body, so we will construct one:
+```js
+{
+    name: "Q4 Buy",
+    advertiser: "Sample Advertiser",
+    brand: "Sample Brand",
+    flightStartDate: "2018-11-01T00:00:00.000+0000",
+    flightEndDate: "2018-12-01T00:00:00.000+0000"
+}
+```
+
+Campaign names must be unique, advertiser/brand must be supplied. All string fields must be under 65 characters. The start date must be after today, and the end date must be after the start date.
+
+Once we have constructed a valid `Campaign`, we make the request:
+```http
+POST /campaign
+
+{"name":"Q4 Buy","advertiser":"Sample Advertiser","brand":"Sample Brand","flightStartDate":"2018-11-01T00:00:00.000+0000","flightEndDate":"2018-12-01T00:00:00.000+0000"}
+```
+and if there are no errors, the persisted version will be returned, containing the `Id`.
