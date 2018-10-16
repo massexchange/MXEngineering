@@ -90,6 +90,14 @@ All entities have `Ids`; they are unique, but not globally. There will never be 
 
 Not all fields are documented here; the ones left off are safe to ignore.
 
+##### `Market`
+
+A distinct liquidity pool, isolated from other orders
+
+* owner: `Organization`
+* members: `Set<Organization>`
+* name: `String`
+
 ##### `AvailabilityGroup`
 
 Represents a group of avails (available supply) with the same asset.
@@ -122,14 +130,14 @@ Represents a group of avails (available supply) with the same asset.
 * flightStartDate: `Date`
 * flightEndDate: `Date`
 
-##### `OrderGroup`
+##### `BuyOrder`
 
 * qty: `Number`
     * Quantity of units desired
 * flightStartDate: `Date`
 * flightEndDate: `Date`
 * marketId: `Id`
-    * Market the `OrderGroup` will eventually be submitted into
+    * Market the `BuyOrder` will eventually be submitted into
 * price: `Currency`
 * asset: `Set<Attribute>`
 * status: `OrderStatus`
@@ -157,7 +165,7 @@ Represents a group of avails (available supply) with the same asset.
 
 #### Endpoints
 
-##### Market Query
+##### Market Availability Query
 
 Query avails for a given `Asset` in a `Market`
 
@@ -166,39 +174,53 @@ Query params: `OrderQuery`
 
 Returns: `Page<AvailablilityGroup>`
 
+##### Market Query
+
+Query all markets your organization is in
+
+`GET /market`
+
+Returns: `Set<Market>`
+
 ##### Attribute Query
+
 Query all known attributes
 
 `GET /attr`
 Returns: `Attribute`
 
 ##### Campaign Creation
+
 Create a new `Campaign`
 
 `POST /campaign`
 Request body: `Campaign`
 
-##### Buy Order Submission
+##### Buy Order Creation
 
-Add a new `OrderGroup` to a `Campaign`
+Add a new `BuyOrder` to a `Campaign`
 
 `POST /campaign/{campId}/orders`
 Path variables:
 * campId: `Id`
 `Campaign` being added to
 
-Request body: `OrderGroup`
+Request body: `BuyOrder`
+
+##### Buy Order Submission
+
+
 
 ##### Buy Order Query
 
-Get the current version of your `OrderGroup`
+Get the current version of your `BuyOrder`
 
 `GET /orderGroup/{groupId}`
 Path variables:
 * groupId: `Id`
-`OrderGroup` being queried
+`BuyOrder` being queried
 
-Returns: `OrderGroup`
+Returns: `BuyOrder`
 
 ##### Match Query
 
