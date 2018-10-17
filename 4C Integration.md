@@ -170,6 +170,7 @@ Represents a group of avails (available supply) with the same asset.
 Query avails for a given `Asset` in a `Market`
 
 `GET /market/sells`
+
 Query params: `OrderQuery`
 
 Returns: `Page<AvailablilityGroup>`
@@ -195,6 +196,7 @@ Returns: `Attribute`
 Create a new `Campaign`
 
 `POST /campaign`
+
 Request body: `Campaign`
 
 Returns: `Campaign`
@@ -204,9 +206,9 @@ Returns: `Campaign`
 Add a new `BuyOrder` to a `Campaign`
 
 `POST /campaign/{campId}/orders`
+
 Path variables:
-* campId: `Id`
-`Campaign` being added to
+* campId: `Id` - `Campaign` being added to
 
 Request body: `BuyOrder`
 Returns: `BuyOrder`
@@ -216,11 +218,10 @@ Returns: `BuyOrder`
 Submit a `BuyOrder` into a `Market`.
 
 `POST /market/{marketId}/orders/group/{groupId}`
+
 Path variables:
-* marketId: `Id`
-`Market` being submitted into
-* groupId: `Id`
-`BuyOrder` being submitted
+* marketId: `Id` - `Market` being submitted into
+* groupId: `Id` - `BuyOrder` being submitted
 
 Returns: `BuyOrder`
 
@@ -229,9 +230,9 @@ Returns: `BuyOrder`
 Get the current version of your `BuyOrder`
 
 `GET /orderGroup/{groupId}`
+
 Path variables:
-* groupId: `Id`
-`BuyOrder` being queried
+* groupId: `Id` - `BuyOrder` being queried
 
 Returns: `BuyOrder`
 
@@ -240,6 +241,7 @@ Returns: `BuyOrder`
 Query your `Match` history
 
 `GET /match`
+
 Query params: `MatchQuery`
 
 Returns: `Page<Match>`
