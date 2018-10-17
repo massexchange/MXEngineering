@@ -187,6 +187,7 @@ Returns: `Set<Market>`
 Query all known attributes
 
 `GET /attr`
+
 Returns: `Attribute`
 
 ##### Campaign Creation
@@ -195,6 +196,8 @@ Create a new `Campaign`
 
 `POST /campaign`
 Request body: `Campaign`
+
+Returns: `Campaign`
 
 ##### Buy Order Creation
 
@@ -206,10 +209,20 @@ Path variables:
 `Campaign` being added to
 
 Request body: `BuyOrder`
+Returns: `BuyOrder`
 
 ##### Buy Order Submission
 
+Submit a `BuyOrder` into a `Market`.
 
+`POST /market/{marketId}/orders/group/{groupId}`
+Path variables:
+* marketId: `Id`
+`Market` being submitted into
+* groupId: `Id`
+`BuyOrder` being submitted
+
+Returns: `BuyOrder`
 
 ##### Buy Order Query
 
@@ -229,7 +242,10 @@ Query your `Match` history
 `GET /match`
 Query params: `MatchQuery`
 
+Returns: `Page<Match>`
+
 ### Workflow
+
 1. Seller submits their supply into the market.
 2. Buyer queries the market to see availible supply.
 3. Buyer submits their demand into the market.
@@ -339,3 +355,93 @@ POST /campaign
 {"name":"Q4 Buy","advertiser":"Sample Advertiser","brand":"Sample Brand","flightStartDate":"2018-11-01T00:00:00.000+0000","flightEndDate":"2018-12-01T00:00:00.000+0000"}
 ```
 and if there are no errors, the persisted version will be returned, containing the `Id`.
+
+>Note: the request body was sent over minified; this is not mandatory, but recommended.
+
+##### Creating a `BuyOrder`
+
+Once you have a `Campaign`, you then create a `BuyOrder` within it. There can be any amount of orders in a campaign.
+
+The buy order creation endpoint is `/campaign/{campId}/orders` and it accepts `POST` requests. It takes a `BuyOrder` object in the request body, so we will construct one:
+```
+{
+    qty: 10,
+    flightStartDate: "2018-11-01T00:00:00.000+0000",
+    flightEndDate: "2018-11-03T00:00:00.000+0000",
+    marketId: ???,
+    price: 800,
+    asset: ???
+}
+```
+Seems like we're missing two bits of information to be able to fully construct this BuyOrder: the `marketId` and the `asset`.
+
+To get the `marketId`, assuming we don't already know which market we're targeting, we need to query the markets we're in: `GET /market`, and when we get back a list of `Markets`, choose the `Id` of the appropriate one.
+
+To construct the asset, we need to get the list of `Attributes` from somewhere; where specifically depends on how you're going about submitting demand. One option is to query all known attributes, and pick some from that list; another option is to query market availability, and use the attributes you find there. We're going to do the second one here.
+
+Referring back to the "Querying the market" example, lets look at the asset in the result we got back:
+```
+{
+    "asset": [
+        {
+            "id": 123,
+            "type": {
+                "id": 456,
+                "name": "Network"
+            },
+            "value": "WeMakeTv"
+        }
+    ],
+    "avails": [
+        {
+            "start": "2018-11-01T00:00:00.000+0000",
+            "end": "2018-11-03T00:00:00.000+0000",
+            "qty": 10,
+            "price": 1000.00
+        },
+        ...
+    ],
+    "marketId": 1
+}
+```
+Typically there would be more attributes in the asset, but lets just use this one as is, and add that to the `BuyOrder` we're constructing, Lets also use the `marketId` present here:
+```
+{
+    qty: 10,
+    flightStartDate: "2018-11-01T00:00:00.000+0000",
+    flightEndDate: "2018-11-03T00:00:00.000+0000",
+    marketId: 1,
+    price: 800,
+    asset: [
+        {
+            "id": 123,
+            "type": {
+                "id": 456,
+                "name": "Network"
+            },
+            "value": "WeMakeTv"
+        }
+    ]
+}
+```
+You only actually need to provide the `Id` field of the attributes, and in the future will be able to just provide a list of ids.
+
+Now that we have a full `BuyOrder`, we're almost ready to make the request; now we just need to construct the full endpoint path. Replace the `campId` parameter in the endpoint with the `Id` of the `Campaign` we created in the previous step, and make the request:
+```
+POST /campaign/123/orders
+
+{"qty":10,"flightStartDate":"2018-11-01T00:00:00.000+0000","flightEndDate":"2018-11-03T00:00:00.000+0000","marketId":1,"price":800,"asset":[{"id":123,"type":{"id":456,"name":"Network"},"value":"WeMakeTv"}]}
+```
+and then, if there are no errors, the persisted version of the `BuyOrder` will be returned, with the `Id`.
+
+##### Submitting a `BuyOrder`
+
+Once you've created one or more `BuyOrders` and validated that they accurately represent your intentions, you then want to submit them into the market.
+
+The `BuyOrder` submission endpoint is `/market/{marketId}/group/{groupId}` and it accepts `POST` requests with no request body.
+
+Take the `marketId` and `groupId` from the previous step, substitute, and then make the request:
+```
+POST /market/1/orders/group/456
+```
+and if there are no errors, the `BuyOrder` will be returned, with a `status` of `Submitted`.
