@@ -146,6 +146,22 @@ Represents a group of avails (available supply) with the same asset.
 * status: `OrderStatus`
     * this field is read-only
 
+##### `Enum<OrderStatus>`
+
+* Unsubmitted
+    * This order has not been submitted into the market yet
+* Pending
+    * This order is pending submission and is not in the market yet
+* Submitted
+    * This order has been submitted and is active in the market
+* Filled
+    * This order has been fully filled and is now inactive
+* Expired
+    * This order's flight date has passed and it has been automatically deactivated
+* Deactivated
+    * This order has been deactivated and is no longer in the market
+
+
 ##### `OrderQuery`
 
 * start: `Date`
@@ -254,7 +270,7 @@ Returns: `Page<Match>`
 1. Seller submits their supply into the market.
 2. Buyer queries the market to see availible supply.
 3. Buyer submits their demand into the market.
-4. If there is is no match, the orders rest until cancelled or expired.
+4. If there is is no match, the orders rest until canceled or expired.
 5. If there is a match, the inventory is transferred and taken off the market.
 6. After a match, buyer can see results on the Log.
 
