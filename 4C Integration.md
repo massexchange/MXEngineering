@@ -32,6 +32,8 @@ Within the MX platform we think in terms of `Organizations`, `Users`, `Teams`, `
 
 * Supply and demand are matched on, in order of priority, **asset, price, and submission order**.
 
+* If identical orders are submitted into the market and compete for liquidity, the one **submitted first** will have a chance to match before the other one.
+
 * Sellers may only enter sell orders for assets they actually have in their catalog. Buyers may enter any valid order, even if there is nothing available in the market to match it.
 
 * Orders entered into the market represent an intention to buy/sell, and once an order is matched it is considered **non-cancellable**. Orders should not be submitted unless you are willing to commit to the outcome.
@@ -43,9 +45,10 @@ Within the MX platform we think in terms of `Organizations`, `Users`, `Teams`, `
     * User B enters a `Buy Order` for `Color: Green | Size: Small`
     * Order A is `more specific` than Order B, as it describes an asset more precisely (provides more information about it). Since the demand here can be met with supply for ANY small green fruit, the fact that Order A is for an apple is irrelevant. If there were another sell order for a pear, Order B could also match against it.
 
-* Orders can be partially filled, ie an order for 10 can match against an order for 5, and the remainder will stay in the market.
+* Orders can be partially filled, ie an order for 10 can match against an order for 5, and the remainder will stay in the market. The order can be matched against by orders that enter the market in the future, and maintain their priority in terms of submission time.
 
-* Orders can be matched for assets running, at the earliest, tomorrow. Today's assets cannot be matched against; processing time is required to traffic matches. Sellers can configure a longer trafficking window if one day is not adequate.
+* Orders can be matched for assets running, at the earliest, tomorrow. Today's assets cannot be matched against; processing time is required to traffic matches. Sellers can configure a longer trafficking window if one day is not adequate. Once an order can no longer be matched against, it is expired and automatically remoed from the market.
+
 
 ### API Structure
 
