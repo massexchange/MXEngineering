@@ -255,6 +255,18 @@ Path variables:
 
 Returns: `BuyOrder`
 
+##### Buy Order Deactivation
+
+Deactivate your `BuyOrder` to remove it from the market
+
+`PUT /orderGroup/{groupId}/status`
+
+Path variables:
+* groupId: `Id` - `BuyOrder` being queried
+
+Request body: `OrderStatus`
+* Must be the string `Deactivated`
+
 ##### Match Query
 
 Query your `Match` history
@@ -466,3 +478,17 @@ Take the `marketId` and `groupId` from the previous step, substitute, and then m
 POST /market/1/orders/group/456
 ```
 and if there are no errors, the `BuyOrder` will be returned, with a `status` of `Submitted`.
+
+##### Deactivating a `BuyOrder`
+
+Sometimes, you'll want to deactivate an order you've submitted, either if you made a mistake, changed your mind, or have filled your demand elsewhere.
+
+The `BuyOrder` deactivation endpoint is `/orderGroup/{groupId}/status` ad it accepts `PUT` requests with an `OrderStatus` in the request body. The only currently accepted status is `Deactivated`.
+
+Take the `groupId` from the previous step, and construct your request:
+```
+PUT /orderGroup/123/status
+
+"Deactivated"
+```
+and if there are no errors, your `BuyOrder` has been deactivated and is no longer active in the market. There is no return besides a `200 OK`.
