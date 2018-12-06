@@ -607,3 +607,47 @@ you'll get back a `List<CampaignSummaryDTO>`, which contains a summary of unflig
 }
 ```
 These results can be used to track purchased assets per campaign.
+
+##### Querying the Log
+
+When some of your purchased assets start to air, you'll want to track where and when they end up airing. The Log is where this is done. Please note that this functionality is in beta, and as the `Deal`s returned come from the sellers' systems, they may not be perfectly in sync with your `Match`es.
+
+The `Deal` endpoint is `/deal/{advertiserName}` and it accepts `GET` requests.
+
+Replace `advertiserName` with the name of the advertiser for which you are querying, URL-encode it, and send the request:
+```http
+GET /deal/ABC%20Industries
+```
+You'll get in response a `Set<Deal>`:
+```json
+{
+    "advertiser": "ABC Industries",
+    "agency": "WeBuyTv",
+    "airTime": "01:28:00.000",
+    "asset": [
+        {
+            "id": 123,
+            "type": {
+                "id": 456,
+                "name": "Network"
+            },
+            "value": "WeMakeTv"
+        }
+    ],
+    "brand": "Shiny New Product - Q4",
+    "broadcastDate": "2018-11-02T00:00:00.000Z",
+    "category": "CPG",
+    "dealSalesType": "Linear",
+    "grossDollars": 1000,
+    "guaranteed": true,
+    "logStatus": "PRELOG",
+    "marketplace": "Scatter",
+    "network": "WeMakeTv",
+    "onLog": true,
+    "rateCardDollars": 1000,
+    "revenueStream": "National",
+    "spotType": "Commercial",
+    "status": "Order",
+    "unitStatus": "Scheduled"
+}
+```
