@@ -163,7 +163,6 @@ Represents a group of avails (available supply) with the same asset.
 * Deactivated
     * This order has been deactivated and is no longer in the market
 
-
 ##### `OrderQuery`
 
 * start: `Date`
@@ -202,6 +201,27 @@ Represents a group of avails (available supply) with the same asset.
 * counterParty: `String`
 * price: `Currency`
 * quantity: `Number`
+
+##### `Deal`
+
+* network: `String`
+* unitId: `String`
+* broadcastDate: `Date`
+* airTime: `Time`
+* status: `DealStatus`
+* marketplace: `Marketplace`
+* dealSalesType: `DealSalesType`
+* unitStatus: `UnitStatus`
+* logStatus: `LogStatus`
+* spotType: `SpotType`
+* guaranteed: `Boolean`
+* onLog: `Boolean`
+* agency: `String`
+* advertiser: `String`
+* brand: `String`
+* category: `String`
+* grossDollars: `Currency`
+* asset: `Set<Pair<String, String>>`
 
 #### Endpoints
 
@@ -316,12 +336,14 @@ Returns: `List<Pair<String, Long>>`
 
 ##### Advertiser Log Query
 
+Query `Deal` status for a particular advertiser
+
 `GET /deal/advertiser/{advertiserName}`
 
 Path variables:
 * advertiserName: `String`
 
-Returns: `List<Deal>`
+Returns: `Set<Deal>`
 
 ### Workflow
 
