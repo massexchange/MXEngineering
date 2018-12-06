@@ -183,6 +183,26 @@ Represents a group of avails (available supply) with the same asset.
     * asset date
 * pageIndex: `Number`
 
+##### `CampaignSummaryDTO`
+
+* advertiser: `String`
+* brand: `String`
+* assetsToMatchingInfoList: `List<Pair<Instrument, List<MatchInfoDTO>>>`
+
+##### `Instrument`
+
+* attributes: `Set<Attribute>`
+
+##### `MatchInfoDTO`
+
+* flightDate: `Date`
+* submittedDate: `Date`
+* matchedOn: `Date`
+* marketName: `String`
+* counterParty: `String`
+* aparPrice: `Currency`
+* asarPrice: `Currency`
+* quantity: `Number`
 
 #### Endpoints
 
@@ -278,6 +298,31 @@ Query your `Match` history
 Query params: `MatchQuery`
 
 Returns: `Page<Match>`
+
+##### Match Summary
+
+Get a summary of unflighted `Match`
+
+`GET /match/summary`
+
+Returns: `List<CampaignSummaryDTO>`
+
+##### Advertiser Query
+
+Get a list of your advertisers with their deal counts
+
+`GET /deal/advertiser`
+
+Returns: `List<Pair<String, Long>>`
+
+##### Advertiser Log Query
+
+`GET /deal/advertiser/{advertiserName}`
+
+Path variables:
+* advertiserName: `String`
+
+Returns: `List<Deal>`
 
 ### Workflow
 
@@ -471,7 +516,7 @@ and then, if there are no errors, the persisted version of the `BuyOrder` will b
 
 ##### Submitting a `BuyOrder`
 
-Once you've created one or more `BuyOrders` and validated that they accurately represent your intentions, you then want to submit them into the market.
+Once you've created one or more `BuyOrder`s and validated that they accurately represent your intentions, you then want to submit them into the market.
 
 The `BuyOrder` submission endpoint is `/market/{marketId}/group/{groupId}` and it accepts `POST` requests with no request body.
 
