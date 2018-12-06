@@ -200,8 +200,7 @@ Represents a group of avails (available supply) with the same asset.
 * matchedOn: `Date`
 * marketName: `String`
 * counterParty: `String`
-* aparPrice: `Currency`
-* asarPrice: `Currency`
+* price: `Currency`
 * quantity: `Number`
 
 #### Endpoints
@@ -539,3 +538,50 @@ PUT /orderGroup/123/status
 "Deactivated"
 ```
 and if there are no errors, your `BuyOrder` has been deactivated and is no longer active in the market. There is no return besides a `200 OK`.
+
+##### Querying `Match` Results
+
+Once at least some of your `BuyOrder`s have matched, you will want to query the results and see what you've purchased. There are two ways to do this: querying `Match`es directly if you want a granular view, or getting a summary designed for human review. We will focus on the latter here.
+
+The `Match` summary endpoint is `/match/summary` and it accepts `GET` requests.
+
+Once you send the request:
+```
+GET /match/summary
+```
+you'll get back a `List<CampaignSummaryDTO>`, which contains a summary of unflighted matches per campaign:
+```json
+{
+    "advertiser": "ABC Industries",
+    "brand": "Shiny New Product - Q4",
+    "assetsToMatchingInfoList": [
+        {
+            "key": {
+                "attributes": [
+                    {
+                        "id": 123,
+                        "type": {
+                            "id": 456,
+                            "name": "Network"
+                        },
+                        "value": "WeMakeTv"
+                    }
+                ]
+            },
+            "value": [
+                {
+                    "flightDate": "2018-11-02T00:00:00.000+0000",
+                    "submittedDate": "2018-10-20T00:00:00.000+0000",
+                    "matchedOn": "2018-10-21T00:00:00.000+0000",
+                    "marketName": "WeMakeTv Buyers",
+                    "counterParty": "WeMakeTv",
+                    "price": 1000,
+                    "quantity": 6,
+
+                }
+            ]
+        }
+    ]
+}
+```
+These results can be used to track purchased assets per campaign.
