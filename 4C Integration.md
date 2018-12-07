@@ -49,7 +49,7 @@ Within the MX platform we think in terms of `Organizations`, `Users`, `Teams`, `
 
 * Orders may be deactivated (canceled) after submission, but only if they have not matched. Orders that have partially matched may have their unmatched part deactivated, but not the matched part.
 
-* Orders can be matched for assets running, at the earliest, tomorrow. Today's assets cannot be matched against; processing time is required to traffic matches. Sellers can configure a longer trafficking window if one day is not adequate. Once an order can no longer be matched against, it is expired and automatically remoed from the market.
+* Orders can be matched for assets running, at the earliest, tomorrow. Today's assets cannot be matched against; processing time is required to traffic matches. Sellers can configure a longer trafficking window if one day is not adequate. Once an order can no longer be matched against, it is expired and automatically removed from the market.
 
 
 ### API Structure
